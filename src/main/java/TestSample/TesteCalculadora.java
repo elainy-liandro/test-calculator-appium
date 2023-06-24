@@ -2,7 +2,9 @@ package TestSample;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
+import org.junit.Assert;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.MalformedURLException;
@@ -30,6 +32,11 @@ public class TesteCalculadora {
     public void TestCalculadora_Somar() throws MalformedURLException {
         iniciar();
 
-    }
+        driver.findElementById("com.google.android.calculator:id/digit_7").click();
+        driver.findElementByAccessibilityId("plus").click();
+        driver.findElementById("com.google.android.calculator:id/digit_8").click();
+        driver.findElementByAccessibilityId("equals").click();
+        Assert.assertEquals("15",driver.findElementById("com.google.android.calculator:id/result_final").getText());
 
+    }
 }
